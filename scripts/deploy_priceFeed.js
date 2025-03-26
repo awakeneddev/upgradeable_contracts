@@ -12,9 +12,10 @@ async function main() {
     { initializer: "initialize" }
   );
 
-  await priceFeedTracker.deployed();
+  await priceFeedTracker.waitForDeployment();
+  const proxyAddress = await priceFeedTracker.getAddress();
 
-  console.log("price FeedTracker deployed to:", priceFeedTracker.address);
+  console.log("price FeedTracker deployed to:", proxyAddress);
 }
 
 main();
